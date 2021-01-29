@@ -101,8 +101,11 @@ public class ShopManagementController {
         }
         // 2.注册店铺
         if (shop != null && shopImg != null) {
-            PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+            PersonInfo owner = new PersonInfo();
+            owner.setUserId(1l);
             shop.setOwner(owner);
+//            PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
+//            shop.setOwner(owner);
             ShopExecution se;
             try {
                 ImageHolder imageHolder = new ImageHolder(shopImg.getOriginalFilename(), shopImg.getInputStream());

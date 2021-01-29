@@ -23,6 +23,12 @@
 		<property name="suffix" value=".html"></property>
 	</bean>
 
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>
+		<property name="maxUploadSize" value="20971520"></property>
+		<property name="maxInMemorySize" value="20971520"></property>
+	</bean>
+
 	<!-- 4.扫描web相关的bean -->
 	<context:component-scan base-package="top.ysxc.o2o.web" />
 <!--	&lt;!&ndash; 5.权限拦截器 &ndash;&gt;-->
