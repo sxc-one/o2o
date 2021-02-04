@@ -133,6 +133,7 @@ public class ShopManagementController {
                 if (se.getState() == ShopStateEnum.CHECK.getState()) {
                     modelMap.put("success", true);
                     // 该用户可以操作的店铺列表
+                    @SuppressWarnings("unchecked")
                     List<Shop> shopList = (List<Shop>) request.getSession().getAttribute("shopList");
                     if (shopList == null || shopList.size() == 0) {
                         shopList = new ArrayList<>();
@@ -188,11 +189,6 @@ public class ShopManagementController {
         }
         // 2.修改店铺
         if (shop != null && shop.getShopId() != null) {
-            PersonInfo owner = new PersonInfo();
-            owner.setUserId(1l);
-            shop.setOwner(owner);
-//            PersonInfo owner = (PersonInfo) request.getSession().getAttribute("user");
-//            shop.setOwner(owner);
             ShopExecution se;
             try {
                 if (shopImg == null) {
