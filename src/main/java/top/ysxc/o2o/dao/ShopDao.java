@@ -8,6 +8,7 @@ import top.ysxc.o2o.entity.Shop;
  */
 public interface ShopDao {
 
+    Shop queryByShopId(long shopId);
     /**
      * 新增店铺
      *
