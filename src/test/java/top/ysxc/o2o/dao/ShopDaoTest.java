@@ -10,6 +10,7 @@ import top.ysxc.o2o.entity.Shop;
 import top.ysxc.o2o.entity.ShopCategory;
 
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -21,6 +22,25 @@ public class ShopDaoTest extends BaseTest {
 
     @Autowired
     private ShopDao shopDao;
+
+    @Test
+    public void testQueryShopListAndCount() {
+        Shop shopCondition = new Shop();
+        ShopCategory childCategory = new ShopCategory();
+        ShopCategory parentCategory = new ShopCategory();
+//        parentCategory.setShopCategoryId(12L);
+//        childCategory.setParent(parentCategory);
+        shopCondition.setShopCategory(childCategory);
+        List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 6);
+        int count = shopDao.queryShopCount(shopCondition);
+        for (Shop shop : shopList) {
+            System.out.println(shop.getShopCategory().getShopCategoryId());
+        }
+        System.out.println("店铺列表的大小：" + shopList.size());
+        System.out.println("店铺总数：" + count);
+    }
+
+
 
     @Test
     public void testQueryByShopId() {

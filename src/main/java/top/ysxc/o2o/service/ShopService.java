@@ -14,6 +14,8 @@ import java.io.InputStream;
  */
 public interface ShopService {
 
+    ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize);
+
     Shop getByShopId(long shopId);
 
     ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException;
