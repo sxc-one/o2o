@@ -10,5 +10,15 @@ import java.util.List;
  */
 public interface ProductImgDao {
 
+    /**
+     * 列出某个商品的详情图列表
+     *
+     * @param productId
+     * @return
+     */
+    List<ProductImg> queryProductImgList(long productId);
+
     int batchInsertProductImg(List<ProductImg> productImgList);
+
+    int deleteProductImgByProductId(long productId);
 }
