@@ -43,7 +43,7 @@ public class ProductManagementController {
     @ResponseBody
     private Map<String, Object> addProduct(HttpServletRequest request) {
         Map<String, Object> modelMap = new HashMap<>();
-        if (CodeUtil.checkVerifyCode(request)) {
+        if (!CodeUtil.checkVerifyCode(request)) {
             modelMap.put("success", false);
             modelMap.put("errMsg", "输入了错误的验证码");
             return modelMap;
