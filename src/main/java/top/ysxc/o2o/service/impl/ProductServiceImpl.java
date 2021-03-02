@@ -13,6 +13,7 @@ import top.ysxc.o2o.enums.ProductStateEnum;
 import top.ysxc.o2o.exceptions.ProductOperationException;
 import top.ysxc.o2o.service.ProductService;
 import top.ysxc.o2o.util.ImageUtil;
+import top.ysxc.o2o.util.PageCalculator;
 import top.ysxc.o2o.util.PathUtil;
 
 import java.util.ArrayList;
@@ -66,7 +67,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductExecution getProductList(Product productCondition, int pageIndex, int pageSize) {
-        return null;
+        int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
+        List<Product> productList = productDao.queryProductList(productCondition, rowIndex, pageSize);
+        int count = productDao.queryProductCount(productCondition);
+        ProductExecution pe = new ProductExecution();
+        pe.setProductList(productList);
+        pe.setCount(count);
+        return pe;
     }
 
     @Override
