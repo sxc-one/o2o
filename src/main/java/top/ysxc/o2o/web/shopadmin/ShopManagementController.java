@@ -54,7 +54,7 @@ public class ShopManagementController {
         Map<String, Object> modelMap = new HashMap<>();
         long shopId = HttpServletRequestUtil.getLong(request, "shopId");
         if (shopId <= 0) {
-            Object currentShopObj = request.getSession().getAttribute("shopId");
+            Object currentShopObj = request.getSession().getAttribute("currentShop");
             if (currentShopObj == null) {
                 modelMap.put("redirect", true);
                 modelMap.put("url", "/o2o/shopadmin/shoplist");

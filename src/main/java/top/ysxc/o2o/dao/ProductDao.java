@@ -27,4 +27,6 @@ public interface ProductDao {
     Product queryProductById(long productId);
 
     int updateProduct(Product product);
+
+    int updateProductCategoryToNull(long productCategoryId);
 }
