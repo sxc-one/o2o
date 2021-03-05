@@ -28,8 +28,8 @@ public class ShopDaoTest extends BaseTest {
         Shop shopCondition = new Shop();
         ShopCategory childCategory = new ShopCategory();
         ShopCategory parentCategory = new ShopCategory();
-//        parentCategory.setShopCategoryId(12L);
-//        childCategory.setParent(parentCategory);
+        parentCategory.setShopCategoryId(1L);
+        childCategory.setParent(parentCategory);
         shopCondition.setShopCategory(childCategory);
         List<Shop> shopList = shopDao.queryShopList(shopCondition, 0, 6);
         int count = shopDao.queryShopCount(shopCondition);
