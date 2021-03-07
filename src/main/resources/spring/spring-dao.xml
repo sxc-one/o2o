@@ -25,15 +25,15 @@
 		<!-- 配置连接池属性 -->
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.master.url}" />
-		<property name="user" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="user" value="${jdbc.master.username}" />
+		<property name="password" value="${jdbc.master.password}" />
 	</bean>
 	<bean id="slave" parent="abstractDataSource">
 		<!-- 配置连接池属性 -->
 		<property name="driverClass" value="${jdbc.driver}" />
 		<property name="jdbcUrl" value="${jdbc.slave.url}" />
-		<property name="user" value="${jdbc.username}" />
-		<property name="password" value="${jdbc.password}" />
+		<property name="user" value="${jdbc.slave.username}" />
+		<property name="password" value="${jdbc.slave.password}" />
 	</bean>
 	<!-- 配置动态数据源，这儿targetDataSources就是路由数据源所对应的名称 -->
 	<bean id="dynamicDataSource" class="top.ysxc.o2o.dao.split.DynamicDataSource">
