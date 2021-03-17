@@ -66,6 +66,8 @@ public class LocalAuthController {
 			modelMap.put("errMsg", "用户名和密码均不能为空");
 		}
 		return modelMap;
+
+
 	}
 
 	@RequestMapping(value = "/changelocalpwd", method = RequestMethod.POST)
