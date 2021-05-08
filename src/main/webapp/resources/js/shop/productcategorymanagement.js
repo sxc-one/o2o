@@ -41,10 +41,10 @@ $(function() {
 								+ '</div>';
 						$('.category-wrap').append(tempHtml);
 					});
-	$('#submit').click(function () {
+	$('#submit').click(function() {
 		var tempArr = $('.temp');
 		var productCategoryList = [];
-		tempArr.map(function (index, item) {
+		tempArr.map(function(index, item) {
 			var tempObj = {};
 			tempObj.productCategoryName = $(item).find('.category').val();
 			tempObj.priority = $(item).find('.priority').val();
@@ -57,7 +57,7 @@ $(function() {
 			type : 'POST',
 			data : JSON.stringify(productCategoryList),
 			contentType : 'application/json',
-			success : function (data) {
+			success : function(data) {
 				if (data.success) {
 					$.toast('提交成功！');
 					getList();

@@ -21,13 +21,13 @@ public interface PersonInfoService {
 	 * @param pageSize
 	 * @return
 	 */
-//	PersonInfoExecution getPersonInfoList(PersonInfo personInfoCondition, int pageIndex, int pageSize);
-//
-//	/**
-//	 * 根据传入的PersonInfo修改对应的用户信息
-//	 *
-//	 * @param pi
-//	 * @return
-//	 */
-//	PersonInfoExecution modifyPersonInfo(PersonInfo pi);
+	PersonInfoExecution getPersonInfoList(PersonInfo personInfoCondition, int pageIndex, int pageSize);
+
+	/**
+	 * 根据传入的PersonInfo修改对应的用户信息
+	 *
+	 * @param pi
+	 * @return
+	 */
+	PersonInfoExecution modifyPersonInfo(PersonInfo pi);
 }

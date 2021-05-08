@@ -19,6 +19,7 @@ public class LocalAuthServiceTest extends BaseTest {
 	private LocalAuthService localAuthService;
 
 	@Test
+	@Ignore
 	public void testABindLocalAuth() {
 		// 新增一条平台帐号
 		LocalAuth localAuth = new LocalAuth();

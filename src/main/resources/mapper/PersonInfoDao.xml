@@ -47,7 +47,7 @@
 		</where>
 	</select>
 	<select id="queryPersonInfoById" resultType="top.ysxc.o2o.entity.PersonInfo"
-		parameterType="long">
+		parameterType="Long">
 		SELECT
 		user_id,
 		name,

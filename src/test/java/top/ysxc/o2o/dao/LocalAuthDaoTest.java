@@ -39,14 +39,14 @@ public class LocalAuthDaoTest extends BaseTest {
 	public void testBQueryLocalByUserNameAndPwd() throws Exception {
 		// 按照帐号和密码查询用户信息
 		LocalAuth localAuth = localAuthDao.queryLocalByUserNameAndPwd(username, password);
-		assertEquals("test", localAuth.getPersonInfo().getName());
+		assertEquals("测试", localAuth.getPersonInfo().getName());
 	}
 
 	@Test
 	public void testCQueryLocalByUserId() throws Exception {
 		// 按照用户Id查询平台帐号，进而获取用户信息
 		LocalAuth localAuth = localAuthDao.queryLocalByUserId(1L);
-		assertEquals("test", localAuth.getPersonInfo().getName());
+		assertEquals("测试", localAuth.getPersonInfo().getName());
 	}
 
 	@Test

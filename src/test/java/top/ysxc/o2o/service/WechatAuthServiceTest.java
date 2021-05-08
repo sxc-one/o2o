@@ -1,7 +1,5 @@
 package top.ysxc.o2o.service;
 
-import static org.junit.Assert.assertEquals;
-
 import top.ysxc.o2o.BaseTest;
 import top.ysxc.o2o.dto.WechatAuthExecution;
 import top.ysxc.o2o.entity.PersonInfo;
@@ -11,6 +9,8 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+
+import static org.junit.Assert.assertEquals;
 
 public class WechatAuthServiceTest extends BaseTest {
 	@Autowired

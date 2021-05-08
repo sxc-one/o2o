@@ -30,11 +30,14 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public ShopExecution getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+        //将页码转换成行码
         int rowIndex = PageCalculator.calculateRowIndex(pageIndex, pageSize);
+        //依据查询条件，调用dao层返回相关的店铺列表
         List<Shop> shopList = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
+        //依据相同的查询条件，返回店铺总数
         int count = shopDao.queryShopCount(shopCondition);
         ShopExecution se = new ShopExecution();
-        if(shopList != null) {
+        if (shopList != null) {
             se.setShopList(shopList);
             se.setCount(count);
         } else {
@@ -45,23 +48,26 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     public Shop getByShopId(long shopId) {
-
         return shopDao.queryByShopId(shopId);
     }
 
     @Override
+    @Transactional
     public ShopExecution modifyShop(Shop shop, ImageHolder thumbnail) throws ShopOperationException {
         if (shop == null || shop.getShopId() == null) {
             return new ShopExecution(ShopStateEnum.NULL_SHOP);
         } else {
+            // 1.判断是否需要处理图片
             try {
-                if (thumbnail.getImage() != null && thumbnail.getImageName() != null && !"".equals(thumbnail.getImageName())) {
+                if (thumbnail.getImage() != null && thumbnail.getImageName() != null
+                        && !"".equals(thumbnail.getImageName())) {
                     Shop tempShop = shopDao.queryByShopId(shop.getShopId());
                     if (tempShop.getShopImg() != null) {
                         ImageUtil.deleteFileOrPath(tempShop.getShopImg());
                     }
                     addShopImg(shop, thumbnail);
                 }
+                // 2.更新店铺信息
                 shop.setLastEditTime(new Date());
                 int effectedNum = shopDao.updateShop(shop);
                 if (effectedNum <= 0) {
@@ -114,7 +120,7 @@ public class ShopServiceImpl implements ShopService {
     }
 
     private void addShopImg(Shop shop, ImageHolder thumbnail) {
-//        获取shop图片目录的相对值路径
+        // 获取shop图片目录的相对值路径
         String dest = PathUtil.getShopImagePath(shop.getShopId());
         String shopImgAddr = ImageUtil.generateThumbnail(thumbnail, dest);
         shop.setShopImg(shopImgAddr);
